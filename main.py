@@ -1,11 +1,8 @@
-from stats import get_num_chars, get_num_words
+from stats import pretty_print_book_info
 
 
 def main():
-    num_words = get_num_words()
-    print(f"{num_words} words found in the document")
-    num_chars = get_num_chars()
-    print(num_chars)
+    pretty_print_book_info("frankenstein")
 
 
 main()
