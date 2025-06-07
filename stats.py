@@ -1,17 +1,15 @@
 def get_book_text(book):
-    with open(f"books/{book}.txt") as f:
+    with open(f"{book}") as f:
         file_contents = f.read()
     return file_contents
 
 
-def get_num_words(book):
-    text = get_book_text(book)
+def get_num_words(text):
     words = text.split()
     return len(words)
 
 
-def get_num_chars(book):
-    text = get_book_text(book)
+def get_num_chars(text):
     chars = {}
     for char in text:
         c = char.lower()
@@ -35,13 +33,14 @@ def sorted_list_from_dict_of_chars(dict):
 
 
 def pretty_print_book_info(book):
+    text = get_book_text(book)
     print("============ BOOKBOT ============")
-    print(f"Analyzing book found at books/{book}.txt...")
+    print(f"Analyzing book found at {book}...")
     print("----------- Word Count ----------")
-    num_words = get_num_words(book)
+    num_words = get_num_words(text)
     print(f"Found {num_words} total words")
     print("--------- Character Count -------")
-    list_of_chars = sorted_list_from_dict_of_chars(get_num_chars(book))
+    list_of_chars = sorted_list_from_dict_of_chars(get_num_chars(text))
     for char in list_of_chars:
         print(f"{char['char']}: {char['num']}")
     print("============= END ===============")
